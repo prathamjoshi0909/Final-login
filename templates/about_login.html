@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Shree Gurudatta Travels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Add specific styles for this page if needed */
+    </style>
+     <!-- Include the common header -->
+     {% include 'common-header_index.html' %}
+</head>
+
+<body>
+
+    <main>
+        <h2>About Shree Gurudatta Travels</h2>
+        <p>Shree Gurudatta Travels has been a pioneer in the travel industry, providing top-notch services...</p>
+        <p>Our mission is to make travel convenient, comfortable, and memorable for our clients.</p>
+
+        <section class="fleet">
+            <h2>Our Fleet includes a wide range of vehicles to meet all your travel needs:</h2>
+            <ul>
+                <li>Buses</li>
+                <li>Kia Carens</li>
+                <li>Toyota Innova</li>
+                <li>Toyota Etios</li>
+                <li>Maruti Ertiga</li>
+                <li>Tata Sumo</li>
+            </ul>
+            <hr>
+                All Segments, All Vehicles
+            
+             <h3>Contact us for more info.</h3>
+        </section>
+    
+    </main>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+<!-- Include the common footer -->
+{% include 'common-footer.html' %}
+
+</html>

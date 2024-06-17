@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Shree Gurudatta Travels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Add specific styles for this page if needed */
+    </style>
+    <!-- Include the common header -->
+    {% include 'common-header.html' %}
+</head>
+
+<body>
+    
+    </header>
+
+    <main>
+        <h2>Sign Up</h2>
+        <form id="signupForm" onsubmit="registerUser(event)">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br><br>
+            <input type="submit" value="Sign Up">
+        </form>
+        <p id="signupMessage"></p>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+    </main>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script>
+        function registerUser(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+
+            // Send form data to PHP script for processing
+            fetch('process_signup.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    email: email
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('signupMessage').textContent = 'Registration successful!';
+                    // Redirect to login page or perform necessary actions
+                } else {
+                    document.getElementById('signupMessage').textContent = 'Failed to register. Please try again.';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+
+<!-- Include the common footer -->
+{% include 'common-footer.html' %}
+
+</html>

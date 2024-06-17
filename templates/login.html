@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Shree Gurudatta Travels</title>
+    <!-- Add your CSS file link here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Add specific styles for this page if needed */
+    </style>
+    <!-- Include the common header -->
+    {% include 'common-header.html' %}
+</head>
+
+<body>
+
+    <main>
+        <h2>Login</h2>
+        <form id="loginForm" action="process_login.php" method="post" onsubmit="validateLogin(event)">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            
+            <br>
+            <input type="submit" value="Login">
+        </form>
+        <p id="loginMessage"></p>
+        <p>Don't have an account? <a href="{{ url_for('signup') }}" style="color: white;">Sign Up</a></p>
+
+    </main>
+
+    <!-- Add your JavaScript file link here -->
+    <script src="scripts.js"></script>
+    <script>
+        // Your JavaScript functions here
+    </script>
+</body>
+
+<!-- Include the common footer -->
+{% include 'common-footer.html' %}
+
+</html>
