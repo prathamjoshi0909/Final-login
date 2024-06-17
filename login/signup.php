@@ -39,7 +39,13 @@
 .links a:hover {
   color: #45a049;
 }
+
+
   </style>
+    <?php include 'common-header.html'; ?>
+    <?php include 'common-footer.html'; ?>
+
+
 </head>
 
 <body>

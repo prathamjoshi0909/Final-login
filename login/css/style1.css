@@ -9,7 +9,18 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+header {
+    background-color: #FAF9F6;
+    color: rgb(233, 28, 28);
+    padding: 20px 0;
+}
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
 body {
     background: linear-gradient(rgba(0, 0, 50, 0.7), rgba(0, 0, 50, 0.7)), url('../images/background.jpg');
     background-repeat: no-repeat;

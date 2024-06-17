@@ -20,7 +20,7 @@
                     <th>Name</th>
                     <th>Manufacturer</th>
                     <th>Fuel Type</th>
-                    <th>Image</th> 
+                    <!-- <th>Image</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -29,15 +29,19 @@
                     <td>{{ car['Name'] }}</td>
                     <td>{{ car['Manufacturer'] }}</td>
                     <td>{{ car['Fuel_Type'] }}</td>
-                   <!--   <td>
+                    <!-- <td>
                         <img src="{{ car['ImageURL'] }}" alt="{{ car['Name'] }} {{ car['Manufacturer'] }}" width="100">
-                    </td>
-                   Adjust 'ImageURL' based on the actual column name in your DataFrame containing image URLs or paths -->
+                    </td> -->
                     <!-- Add more columns with car details -->
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+
+        <!-- Download button -->
+        <form action="{{ url_for('download_file') }}" method="post">
+            <button type="submit">Download Recommendations</button>
+        </form>
     </center>
 </body>
 

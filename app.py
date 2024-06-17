@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, send_file
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -77,10 +77,10 @@ def get_recommendations():
                 updated_data.to_excel('user_preferences.xlsx', index=False)
             print("User preferences saved to user_preferences.xlsx successfully.")
 
-            if not os.path.exists('recommended_cars.xlsx'):
-                recommended_cars.to_excel('recommended_cars.xlsx', index=False)
+            if not os.path.exists('templates/recommended_cars.xlsx'):
+                recommended_cars.to_excel('templates/recommended_cars.xlsx', index=False)
             else:
-                recommended_cars.to_excel('recommended_cars.xlsx', index=False)
+                recommended_cars.to_excel('templates/recommended_cars.xlsx', index=False)
             print("Recommended cars saved to recommended_cars.xlsx successfully.")
         except Exception as e:
             print(f"Error saving data to Excel file: {e}")
@@ -115,6 +115,23 @@ def login():
 @app.route('/signup')
 def signup():
     return send_from_directory('/Applications/XAMPP/xamppfiles/htdocs/', 'signup.html')
+
+
+
+@app.route('/download_file', methods=['POST'])
+def download_file():
+    # Create a DataFrame with your recommendations (for example purposes)
+    recommendations = pd.DataFrame({
+        'Name': ['Car A', 'Car B', 'Car C', 'Car D', 'Car E'],
+        'Manufacturer': ['Manufacturer A', 'Manufacturer B', 'Manufacturer C', 'Manufacturer D', 'Manufacturer E'],
+        'Fuel_Type': ['Petrol', 'Diesel', 'Electric', 'Hybrid', 'CNG']
+    })
+    
+    # Save the DataFrame to a CSV file
+    recommendations.to_csv('recommendations.csv', index=False)
+    
+    # Send the file to the user
+    return send_file('recommendations.csv', as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
