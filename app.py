@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory, send_file
+from flask import Flask, render_template, request, send_from_directory, send_file, abort
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -118,20 +118,13 @@ def signup():
 
 
 
-@app.route('/download_file', methods=['POST'])
+@app.route('/download', methods=['POST'])
 def download_file():
-    # Create a DataFrame with your recommendations (for example purposes)
-    recommendations = pd.DataFrame({
-        'Name': ['Car A', 'Car B', 'Car C', 'Car D', 'Car E'],
-        'Manufacturer': ['Manufacturer A', 'Manufacturer B', 'Manufacturer C', 'Manufacturer D', 'Manufacturer E'],
-        'Fuel_Type': ['Petrol', 'Diesel', 'Electric', 'Hybrid', 'CNG']
-    })
-    
-    # Save the DataFrame to a CSV file
-    recommendations.to_csv('recommendations.csv', index=False)
-    
-    # Send the file to the user
-    return send_file('recommendations.csv', as_attachment=True)
+    template_folder = 'templates'
+    filename = 'recommended_cars.xlsx'
+    return send_from_directory(template_folder, filename, as_attachment=True)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
