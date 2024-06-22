@@ -285,3 +285,46 @@ footer {
     background: #d7cece;
     color: #000;
 }
+
+
+/* Add specific styles for this page if needed */
+.fleet-and-clients {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.fleet {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.trusted-clients {
+    flex: 1;
+    text-align: center;
+}
+
+.trusted-clients h2 {
+    margin-bottom: 20px;
+}
+
+.trusted-clients img {
+    width: 45%;
+    transition: transform 0.3s ease;
+    margin: 0 15px;
+}
+
+.trusted-clients img:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+.car-emoji {
+    position: absolute;
+    pointer-events: none; /* Ensures the emoji doesn't interfere with other elements */
+    font-size: 24px; /* Adjust the size as needed */
+    transition: transform 0.1s ease; /* Smooth movement */
+}

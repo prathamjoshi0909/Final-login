@@ -7,10 +7,10 @@
     <title>About Shree Gurudatta Travels</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-        /* Add specific styles for this page if needed */
+        
     </style>
-     <!-- Include the common header -->
-     {% include 'common-header_index.html' %}
+    <!-- Include the common header -->
+    {% include 'common-header_index.html' %}
 </head>
 
 <body>
@@ -20,23 +20,38 @@
         <p>Shree Gurudatta Travels has been a pioneer in the travel industry, providing top-notch services...</p>
         <p>Our mission is to make travel convenient, comfortable, and memorable for our clients.</p>
 
-        <section class="fleet">
-            <h2>Our Fleet includes a wide range of vehicles to meet all your travel needs:</h2>
-            <ul>
-                <li>Buses</li>
-                <li>Kia Carens</li>
-                <li>Toyota Innova</li>
-                <li>Toyota Etios</li>
-                <li>Maruti Ertiga</li>
-                <li>Tata Sumo</li>
-                And much more
-            </ul>
-            <hr>
+        <div class="fleet-and-clients">
+            <section class="fleet">
+                <h2>Our Fleet includes a wide range of vehicles to meet all your travel needs:</h2>
+                <ul>
+                    <li>Buses</li>
+                    <li>Kia Carens</li>
+                    <li>Toyota Innova</li>
+                    <li>Toyota Etios</li>
+                    <li>Maruti Ertiga</li>
+                    <li>Tata Sumo</li>
+                    And much more
+                </ul>
+                <hr>
                 All Segments, All Vehicles
-            
-             <h3>Contact us for more info.</h3>
-        </section>
-    
+
+                <h3>Contact us for more info.</h3>
+            </section>
+
+            <section class="trusted-clients">
+                <h2>Our Trusted Clients</h2>
+                <hr>
+                <a href="https://www.tetrapak.com/en-in" target="_blank">
+                    <img src="static/tertapak.jpeg" alt="Company 1 Logo">
+                </a><br>
+                <h4>TetraPak India Pvt. LTD</h4>
+                <br>
+                <a href="https://www.larsentoubro.com" target="_blank">
+                    <img src="static/lnt.jpeg" alt="Company 2 Logo">
+                </a>
+                <h4>Larsen & Toubro Defence Talegoan, India</h4>
+            </section>
+        </div>
     </main>
 
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>

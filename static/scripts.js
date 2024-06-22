@@ -49,3 +49,20 @@ function showInfo(popupId) {
     }, 5000); // Hide after 5 seconds
   }
   
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // Create the car emoji element
+    const carEmoji = document.createElement('div');
+    carEmoji.classList.add('car-emoji');
+    carEmoji.textContent = '🚗 🚌';
+    document.body.appendChild(carEmoji);
+
+    // Function to update the position of the car emoji
+    const updateCarPosition = (event) => {
+        carEmoji.style.left = `${event.clientX + 10}px`;  // Offset to avoid overlap with the cursor
+        carEmoji.style.top = `${event.clientY + 10}px`;   // Offset to avoid overlap with the cursor
+    };
+
+    // Add event listener for mouse movement
+    document.addEventListener('mousemove', updateCarPosition);
+});
