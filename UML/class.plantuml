@@ -1,0 +1,68 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package "Vehicle Recommender System" {
+    class "VehicleRecommender" {
+        - app: Flask
+        - data: DataFrame
+        - features: list
+        - model: RandomForestClassifier
+        + load_data(file: str)
+        + preprocess_data()
+        + train_model()
+        + get_recommendations(user_preferences: dict)
+        + index()
+        + recommendations()
+        + download_file()
+    }
+
+    class "HTML Templates" {
+        - car.html
+        - home.html
+        - about.html
+        - recommendations.html
+        - login.html
+    }
+
+    class "Static Files" {
+        - styles.css
+        - scripts.js
+        - images/
+    }
+
+    class "LoginController" {
+        - users_db: dict
+        + validate_user(username, password)
+        + register_user(user_details)
+        + login_user(username, password)
+        + signup_user(user_details)
+    }
+
+    class "User"
+
+    class "Database" {
+        - car_data: Table
+        - user_data: Table
+        + connect()
+        + query()
+        + insert()
+        + update()
+        + delete()
+    }
+
+    "VehicleRecommender" ..> "HTML Templates" : depends on
+    "VehicleRecommender" ..> "Static Files" : depends on
+    "VehicleRecommender" ..> "Database" : depends on
+
+    "LoginController" -- "Database" : uses
+    "LoginController" ..> "VehicleRecommender" : depends on
+
+    "User" -- "LoginController" : interacts with
+    "User" ..> "HTML Templates" : views
+    "User" ..> "VehicleRecommender" : interacts with
+
+    "HTML Templates" o-- "Static Files" : uses
+    "Static Files" *-- "HTML Templates" : part of
+}
+@enduml

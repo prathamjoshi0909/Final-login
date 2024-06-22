@@ -7,7 +7,7 @@ import os
 app = Flask(__name__, static_url_path='/static')
 
 # Load and preprocess your data
-data = pd.read_csv("data.csv")
+data = pd.read_csv("new_car_data.csv")
 
 # Columns to drop
 columns_to_drop = [
@@ -24,16 +24,20 @@ data = data.dropna()
 
 # List of features
 features = [
-    "Displacement",
-    "Body_Type",
-    "Seating_Capacity",
-    "City_Mileage",
+    #"Displacement",
+    #"Body_Type",
+    #"Seating_Capacity",
+    #"City_Mileage",
     # Add more features as needed
+    "Engine CC",
+    "Power",
+    "Seats",
+    "Mileage Km/L",
 ]
 
 # Define X (features) and y (target)
 X = data[features]
-y = data["Make"]
+y = data["Manufacturer"]
 
 # Split data into train and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
