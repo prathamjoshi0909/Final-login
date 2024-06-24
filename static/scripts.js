@@ -54,7 +54,7 @@ function showInfo(popupId) {
     // Create the car emoji element
     const carEmoji = document.createElement('div');
     carEmoji.classList.add('car-emoji');
-    carEmoji.textContent = '🚗 🚌';
+    carEmoji.textContent = '';
     document.body.appendChild(carEmoji);
 
     // Function to update the position of the car emoji
